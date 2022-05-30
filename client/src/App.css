@@ -1,15 +1,482 @@
-.list {
-  text-align: left;
-  max-width: 750px;
+/* NAVIGATION BAR */
+/* navigation bar color */
+nav{
+  height: 80px;
+  width: 100%;
+  background: #000000;
+}
+
+/* image logo */
+nav img{
+  height: auto;
+  width: 250px;
+  padding-top: 5px;
+  padding-left: 35px;
+}
+
+/* unordered list float right */
+nav ul{
+  float: right;
+  margin-right: 80px;
+}
+
+/* list of page links */
+nav li{
+  display: inline-block;
+  margin: 0 8px;
+  line-height: 80px;
+}
+
+/* links to other pages */
+nav a{
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  padding: 7px 10px;
+  border-radius: 3px;
+}
+/* all element margin */
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+/* solid white border when hovering over menu items */
+a.current, a:hover{
+  border: 1px solid white;
+  transition: .5s;
+  background-color: rgb(67, 50, 50);
+}
+
+/* hamburger hide/show for menu */
+nav #hamburger{
+  color: white;
+  font-size: 30px;
+  line-height: 80px;
+  float: right;
+  margin-right: 40px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+@media (max-width: 1302px) {
+  nav #hamburger{
+      visibility: visible;
+      opacity: 1;
+  }
+  nav ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: rgb(51, 50, 50);
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+      z-index: 99999;
+
+  }
+  nav li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+  }
+  nav a{
+      font-size: 20px;
+  }
+  a.active, a:hover{
+      border: 1px solid white;
+      transition: .5s;
+      background-color: rgb(67, 50, 50);
+  }
+  nav ul.show{
+      left: 0;
+  }
+}
+/* THIS WAS NAVIGATION BAR */
+
+/* HOMEPAGE */
+/* background image */
+
+#mainintroduction{
+  min-height: 800px;
+  background:url('mariobg.jpeg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  color: #ffffff;
+  padding-bottom: 80px;
+  border-bottom: #000000 5px solid;
+}
+
+#mainintroduction h1{
+  padding-top: 30px;
+  font-size: 55px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+#mainintroduction p1{
+  font-size: 20px;
+  color: #ffffff;
+}
+
+@media (max-width: 800px) {
+  #mainintroduction h1{
+      font-size: 35px;
+  }
+  #mainintroduction p1{
+      font-size: 15px;
+  }
+}
+/* ABOUT PAGE */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.cardsss {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  width: 60%;
+  padding: 10px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #202529;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* PRODUCTS */
+/*main categories*/
+#productcontainer{
+  width: 90%;
+  margin-top: 60px;
+  margin-left: 5%;
+  margin-right: 5%;
+  position: relative;
+  
+}
+
+.product-cat img{
+  width: 30%;
+  padding: 10px;
+  }
+
+.col-1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.product-cat{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
-.submit-form {
-  max-width: 300px;
+@media screen and (min-width:800px) {
+  .product-cat{
+      width: 50%;
+      display: block;
+      float: left;
+  }
+}
+
+/* SWITCH PRODUCT */
+.switchsection {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.cards{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+.cards .switch-products {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.cards .switch-products h1{
+  text-align: center;
+  font-size: 35px;
+  color: #222;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0px 2px 4px rgb(0,0,0,25%);
+  width: 450px;
+  text-align: center;
+  margin: 25px;
+  background-color: #fff;
+}
+
+.image-section {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  width: 80%;
+  height: auto;
+}
+
+.image-section img:hover {
+  transform: scale(1.01);
+  transition: 0.6s ease;
+}
+
+.description {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.description h1{
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #222;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.description p {
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  margin-top: 5px;
+}
+
+.description span {
+  margin-left: 8px;
+}
+
+.description del {
+  margin-left: 7px;
+  font-size: 15px;
+  color: #f2533a;
+  text-decoration: line-through;
+}
+
+.button-group {
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.button-group .buy{
+  background-color: #1976d2;
+  font-size: 14px;
+  padding: 4px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.button-group .buy:hover{
+  background-color: #0b348d;
+  transition: 0.6s ease;
+}
+
+/* POPUP FORMS */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.wrapper {
+  margin: 70px auto;
+  padding: 20px;
+  background: #e7e7e7;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 1s ease-in-out;
+}
+
+@media screen and (max-width:1000px) {
+  .wrapper {
+      margin: 30px auto;
+      width: 50%;
+      overflow: auto;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .wrapper {
+      margin: 30px auto;
+      width: 50%;
+      overflow: auto;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .wrapper {
+      margin: 30px auto;
+      width: 80%;
+      overflow: auto;
+  }
+}
+
+.wrapper h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.wrapper .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.wrapper .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+/* form design */
+
+.container {
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  padding: 10px 0;
+}
+
+form label {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+input[type=text], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=tel], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=number], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=email], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=submit] {
+  background-color: #413b3b;
+  color: #fff;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
