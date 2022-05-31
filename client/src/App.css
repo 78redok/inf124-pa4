@@ -1,6 +1,8 @@
-#form-group{
-  color: black;
+.form-group{
+  margin-left: 20px;
+  margin-right: 20px;
 }
+
 
 /* NAVIGATION BAR */
 /* navigation bar color */
@@ -112,7 +114,7 @@ nav #hamburger{
   background-position: center;
   background-attachment: fixed;
   text-align: center;
-  color: #ffffff;
+  color: #000000;
   padding-bottom: 80px;
   border-bottom: #000000 5px solid;
 }

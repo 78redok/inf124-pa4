@@ -158,7 +158,7 @@ export default class AddTutorial extends Component {
                                 onChange={this.onChangePlatform}
                                 name="platform"
                                 className="form-control"
-                                style={{width: "80%"}}
+                                style={{width: "30%"}}
                             >
                                 <option value="Switch">Switch</option>
                                 <option value="Playstation">Playstation</option>
