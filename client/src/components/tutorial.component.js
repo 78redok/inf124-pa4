@@ -4,8 +4,12 @@ import TutorialDataService from "../services/tutorial.service";
 export default class Tutorial extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangePrice = this.onChangePrice.bind(this);
+    this.onChangePlatform = this.onChangePlatform.bind(this);
+
+
     this.getTutorial = this.getTutorial.bind(this);
     this.updatePublished = this.updatePublished.bind(this);
     this.updateTutorial = this.updateTutorial.bind(this);
@@ -14,8 +18,10 @@ export default class Tutorial extends Component {
     this.state = {
       currentTutorial: {
         id: null,
-        title: "",
+        name: "",
         description: "",
+        price: "",
+        platform: "",
         published: false
       },
       message: ""
@@ -26,26 +32,49 @@ export default class Tutorial extends Component {
     this.getTutorial(this.props.match.params.id);
   }
 
-  onChangeTitle(e) {
-    const title = e.target.value;
+  onChangeName(e) {
+    const name = e.target.value;
 
     this.setState(function(prevState) {
       return {
         currentTutorial: {
           ...prevState.currentTutorial,
-          title: title
+          name: name
         }
       };
     });
   }
 
   onChangeDescription(e) {
-    const description = e.target.value;
+    const descr1 = e.target.value;
     
     this.setState(prevState => ({
       currentTutorial: {
         ...prevState.currentTutorial,
-        description: description
+        descr1: descr1
+      }
+    }));
+  }
+
+  onChangePrice(e) {
+    const price = e.target.value;
+    
+    this.setState(prevState => ({
+      currentTutorial: {
+        ...prevState.currentTutorial,
+        price: price
+      }
+    }));
+  }
+
+
+  onChangePlatform(e) {
+    const platform = e.target.value;
+    
+    this.setState(prevState => ({
+      currentTutorial: {
+        ...prevState.currentTutorial,
+        platform: platform
       }
     }));
   }
@@ -66,8 +95,10 @@ export default class Tutorial extends Component {
   updatePublished(status) {
     var data = {
       id: this.state.currentTutorial.id,
-      title: this.state.currentTutorial.title,
+      name: this.state.currentTutorial.name,
       description: this.state.currentTutorial.description,
+      price: this.state.currentTutorial.price,
+      platform: this.state.currentTutorial.platform,
       published: status
     };
 
@@ -94,7 +125,7 @@ export default class Tutorial extends Component {
       .then(response => {
         console.log(response.data);
         this.setState({
-          message: "The tutorial was updated successfully!"
+          message: "You've successfully updated the game information."
         });
       })
       .catch(e => {
@@ -120,16 +151,16 @@ export default class Tutorial extends Component {
       <div>
         {currentTutorial ? (
           <div className="edit-form">
-            <h4>Tutorial</h4>
+            <h4>Game</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title">Game Name</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="title"
-                  value={currentTutorial.title}
-                  onChange={this.onChangeTitle}
+                  id="name"
+                  value={currentTutorial.name}
+                  onChange={this.onChangeName}
                 />
               </div>
               <div className="form-group">
@@ -137,11 +168,51 @@ export default class Tutorial extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  id="description"
-                  value={currentTutorial.description}
+                  id="descr1"
+                  value={currentTutorial.descr1}
                   onChange={this.onChangeDescription}
                 />
               </div>
+
+              <div className="form-group">
+                <label htmlFor="price">Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="price"
+                  value={currentTutorial.price}
+                  onChange={this.onChangePrice}
+                />
+              </div>
+
+              {/* <div className="form-group">
+                <label htmlFor="platform">Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="price"
+                  value={currentTutorial.price}
+                  onChange={this.onChangePrice}
+                />
+              </div> */}
+
+              <div className="form-group">
+            <label htmlFor="platform">Platform</label>
+                            <select
+                                id="platform"
+                                required
+                                value={currentTutorial.platform}
+                                onChange={this.onChangePlatform}
+                                name="platform"
+                                className="form-control"
+                                style={{width: "80%"}}
+                            >
+                                <option value="Switch">Switch</option>
+                                <option value="Playstation">Playstation</option>
+                                <option value="Xbox">Xbox</option>
+                                <option value="Windows">Windows</option>
+                            </select>
+            </div>
 
               <div className="form-group">
                 <label>

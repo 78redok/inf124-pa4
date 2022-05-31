@@ -4,45 +4,75 @@ import TutorialDataService from "../services/tutorial.service";
 export default class AddTutorial extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeName = this.onChangeName.bind(this);
+    this.onChangePrice = this.onChangePrice.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangePlatform = this.onChangePlatform.bind(this);
+    this.onChangeImgSrc = this.onChangeImgSrc.bind(this);
     this.saveTutorial = this.saveTutorial.bind(this);
     this.newTutorial = this.newTutorial.bind(this);
 
     this.state = {
       id: null,
-      title: "",
+      name: "",
+      price: 59.99,
       description: "", 
+      platform: "Switch",
+      imgSrc: "",
       published: false,
 
       submitted: false
     };
   }
 
-  onChangeTitle(e) {
+  onChangeName(e) {
     this.setState({
-      title: e.target.value
+      name: e.target.value
     });
+  }
+
+  onChangePrice(e) {
+    this.setState({
+      price: e.target.value
+    })
   }
 
   onChangeDescription(e) {
     this.setState({
-      description: e.target.value
+      descr1: e.target.value
+    });
+  }
+
+  onChangePlatform(e) {
+    this.setState({
+      platform: e.target.value
+    });
+  }
+
+  onChangeImgSrc(e) {
+    this.setState({
+      imgSrc: e.target.value
     });
   }
 
   saveTutorial() {
     var data = {
-      title: this.state.title,
-      description: this.state.description
+      name: this.state.name,
+      price: this.state.price,
+      descr1: this.state.descr1,
+      platform: this.state.platform,
+      imgSrc: this.state.imgSrc
     };
 
     TutorialDataService.create(data)
       .then(response => {
         this.setState({
           id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
+          name: response.data.name,
+          price: response.data.price,
+          descr1: response.data.descr1,
+          platform: response.data.platform,
+          imgSrc: response.data.imgSrc,
           published: response.data.published,
 
           submitted: true
@@ -57,8 +87,11 @@ export default class AddTutorial extends Component {
   newTutorial() {
     this.setState({
       id: null,
-      title: "",
-      description: "",
+      name: "",
+      price: 59.99,
+      descr1: "",
+      platform: "Switch",
+      imgSrc: "",
       published: false,
 
       submitted: false
@@ -78,28 +111,72 @@ export default class AddTutorial extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="name">Game Name</label>
               <input
                 type="text"
                 className="form-control"
-                id="title"
+                id="name"
                 required
-                value={this.state.title}
-                onChange={this.onChangeTitle}
-                name="title"
+                value={this.state.name}
+                onChange={this.onChangeName}
+                name="name"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="price">Price</label>
+              <input
+                type="number"
+                className="form-control"
+                id="price"
+                required
+                value={this.state.price}
+                onChange={this.onChangePrice}
+                name="price"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="descr1">Description</label>
               <input
                 type="text"
                 className="form-control"
-                id="description"
+                id="descr1"
                 required
-                value={this.state.description}
+                value={this.state.descr1}
                 onChange={this.onChangeDescription}
-                name="description"
+                name="descr1"
+              />
+            </div>
+
+            <div className="form-group">
+            <label htmlFor="platform">Platform</label>
+                            <select
+                                id="platform"
+                                required
+                                value={this.state.platform}
+                                onChange={this.onChangePlatform}
+                                name="platform"
+                                className="form-control"
+                                style={{width: "80%"}}
+                            >
+                                <option value="Switch">Switch</option>
+                                <option value="Playstation">Playstation</option>
+                                <option value="Xbox">Xbox</option>
+                                <option value="Windows">Windows</option>
+                            </select>
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="imgSrc">Image Upload</label>
+                <input
+                type="text"
+                className="form-control"
+                id="imgSrc"
+                required
+                value={this.state.imgSrc}
+                onChange={this.onChangeImgSrc}
+                name="imgSrc"
               />
             </div>
 
