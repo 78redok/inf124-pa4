@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import TutorialDataService from "../services/tutorial.service";
 
+
+
 export default class AddTutorial extends Component {
+
   constructor(props) {
+
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangePrice = this.onChangePrice.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangePlatform = this.onChangePlatform.bind(this);
+    this.onChangeMonth = this.onChangeMonth.bind(this);
     this.onChangeImgSrc = this.onChangeImgSrc.bind(this);
     this.saveTutorial = this.saveTutorial.bind(this);
     this.newTutorial = this.newTutorial.bind(this);
@@ -17,7 +22,8 @@ export default class AddTutorial extends Component {
       name: "",
       price: 59.99,
       description: "", 
-      platform: "Switch",
+      platform: "",
+      releaseMonth: "",
       imgSrc: "",
       published: false,
 
@@ -49,6 +55,12 @@ export default class AddTutorial extends Component {
     });
   }
 
+  onChangeMonth(e) {
+    this.setState({
+      releaseMonth: e.target.value
+    });
+  }
+
   onChangeImgSrc(e) {
     this.setState({
       imgSrc: e.target.value
@@ -61,6 +73,7 @@ export default class AddTutorial extends Component {
       price: this.state.price,
       descr1: this.state.descr1,
       platform: this.state.platform,
+      releaseMonth: this.state.releaseMonth,
       imgSrc: this.state.imgSrc
     };
 
@@ -72,6 +85,7 @@ export default class AddTutorial extends Component {
           price: response.data.price,
           descr1: response.data.descr1,
           platform: response.data.platform,
+          releaseMonth: response.data.releaseMonth,
           imgSrc: response.data.imgSrc,
           published: response.data.published,
 
@@ -90,7 +104,8 @@ export default class AddTutorial extends Component {
       name: "",
       price: 59.99,
       descr1: "",
-      platform: "Switch",
+      platform: "",
+      releaseMonth: "",
       imgSrc: "",
       published: false,
 
@@ -160,10 +175,38 @@ export default class AddTutorial extends Component {
                                 className="form-control"
                                 style={{width: "30%"}}
                             >
+                                <option value="" disabled selected>Select System</option>
                                 <option value="Switch">Switch</option>
                                 <option value="Playstation">Playstation</option>
                                 <option value="Xbox">Xbox</option>
                                 <option value="Windows">Windows</option>
+                            </select>
+            </div>
+
+            <div className="form-group">
+            <label htmlFor="releaseMonth">Release Month</label>
+                            <select
+                                id="releaseMonth"
+                                required
+                                value={this.state.releaseMonth}
+                                onChange={this.onChangeMonth}
+                                name="releaseMonth"
+                                className="form-control"
+                                style={{width: "30%"}}
+                            >
+                                <option value="" disabled selected>Select Release Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
                             </select>
             </div>
 
@@ -189,3 +232,5 @@ export default class AddTutorial extends Component {
     );
   }
 }
+
+

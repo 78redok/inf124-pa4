@@ -18,6 +18,7 @@ exports.create = (req, res) => {
     price: req.body.price,
     descr1: req.body.descr1,
     platform: req.body.platform,
+    releaseMonth: req.body.releaseMonth,
     imgSrc: req.body.imgSrc,
     published: req.body.published ? req.body.published : false
   };
@@ -37,8 +38,15 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.name;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const name = req.query.name;
+  const platform = req.query.platform;
+  const releaseMonth = req.query.releaseMonth;
+
+// var condition = name ? { name: { [Op.like]: `%${name}%` }, platform: { [Op.like]: `%${platform}%` } } : null;
+ var condition = {[Op.and]: [{name: name ? {[Op.like]: `%${name}%`} : {[Op.like]: `%`}},
+    {platform: platform ? platform : {[Op.like]: `%`}},
+    {releaseMonth: releaseMonth ? releaseMonth : {[Op.like]: `%`}}]
+  }
 
   Tutorial.findAll({ where: condition })
     .then(data => {

@@ -12,6 +12,9 @@ module.exports = (sequelize, Sequelize) => {
     platform: {
       type: Sequelize.STRING
     },
+    releaseMonth: {
+      type: Sequelize.STRING
+    },
     imgSrc: {
       type: Sequelize.STRING
     },
