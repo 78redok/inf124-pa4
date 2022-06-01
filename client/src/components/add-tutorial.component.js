@@ -74,7 +74,7 @@ export default class AddTutorial extends Component {
       descr1: this.state.descr1,
       platform: this.state.platform,
       releaseMonth: this.state.releaseMonth,
-      imgSrc: this.state.imgSrc
+      imgSrc: this.state.imgSrc.replace("C:\\fakepath\\","./gameimages/")
     };
 
     TutorialDataService.create(data)
@@ -165,7 +165,7 @@ export default class AddTutorial extends Component {
             </div>
 
             <div className="form-group">
-            <label htmlFor="platform">Platform</label>
+            <label htmlFor="platform"></label>
                             <select
                                 id="platform"
                                 required
@@ -175,7 +175,7 @@ export default class AddTutorial extends Component {
                                 className="form-control"
                                 style={{width: "30%"}}
                             >
-                                <option value="" disabled selected>Select System</option>
+                                <option value="" disabled selected>Select Platform</option>
                                 <option value="Switch">Switch</option>
                                 <option value="Playstation">Playstation</option>
                                 <option value="Xbox">Xbox</option>
@@ -184,7 +184,7 @@ export default class AddTutorial extends Component {
             </div>
 
             <div className="form-group">
-            <label htmlFor="releaseMonth">Release Month</label>
+            <label htmlFor="releaseMonth"></label>
                             <select
                                 id="releaseMonth"
                                 required
@@ -211,13 +211,26 @@ export default class AddTutorial extends Component {
             </div>
 
             <div className="form-group">
-                <label htmlFor="imgSrc">Image Upload</label>
+                <label htmlFor="imgSrc">Choose Image</label>
                 <input
-                type="text"
+                type="file"
                 className="form-control"
                 id="imgSrc"
                 required
                 value={this.state.imgSrc}
+                onChange={this.onChangeImgSrc}
+                name="imgSrc"
+              />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="imgSrc"></label>
+                <input
+                type="hidden"
+                className="form-control"
+                id="imgSrc"
+                required
+                value={this.state.imgSrc.replace("C:\\fakepath\\","./gameimages/")}
                 onChange={this.onChangeImgSrc}
                 name="imgSrc"
               />
